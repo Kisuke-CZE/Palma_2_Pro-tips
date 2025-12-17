@@ -32,7 +32,7 @@ Both these options brings you to app profile in eInk Wise.
 
 >[!WARNING]  
 >Remember this setting is tied to specific profile for that app. If you change profile from `Customize` to `Recommended` or `Fast` settings including background running will be different (probably default => running in background disabled).  
->You have to customize settings for all profiles, or be sure that profile for that app never changed.
+>You have to customize settings for all profiles, or be sure that profile for that app never changes.
 
 - In eInk Wise profile tap on `Others`  
 ![eInkWise settings](screenshots/pwr04_einkwise_settings.png "eInkWise settings")
@@ -116,6 +116,9 @@ Since on Android some apps needs `Google Services` to show local notifications (
 
 For these purposes you can use [SunUp](https://unifiedpush.org/users/distributors/sunup/), [ntfy](https://unifiedpush.org/users/distributors/ntfy/), or some other implementation.  
 I choosed SunUp because my favorite messaging app has some [weird bug](https://github.com/krille-chan/fluffychat/issues/1314#issuecomment-2336777629) with ntfy.
+
+> [!NOTE]  
+> You will need to enable notification app to [run in background](#enabling-app-to-run-in-background)
 
 ## How to restore Palma 2 Pro if not booting to Android
 
