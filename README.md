@@ -116,3 +116,35 @@ Since on Android some apps needs `Google Services` to show local notifications (
 
 For these purposes you can use [SunUp](https://unifiedpush.org/users/distributors/sunup/), [ntfy](https://unifiedpush.org/users/distributors/ntfy/), or some other implementation.  
 I choosed SunUp because my favorite messaging app has some [weird bug](https://github.com/krille-chan/fluffychat/issues/1314#issuecomment-2336777629) with ntfy.
+
+## How to restore Palma 2 Pro if not booting to Android
+
+If you somehow bricked your Palma and have backup there is still hope!  
+You are probably stuck with unresponsive device with BOOX logo on the screen.
+
+- first connect device to computer and check if it is in fastboot mode with `fastboot getvar all`
+
+- If you are able to get some output, get [edl](https://github.com/bkerler/edl) utility (which you probably already have)
+
+- Leave device connected to computer and issue some `edl` command using correct loader. Example: `edl --loader=palma2pro.bin printgpt`
+
+- Now pres and hold `Power button` on your Palma until device reboots - screen will flash
+
+- Immediately release power button and press and hold VolUp + VolDown until you see device is recognized by computer. Then release buttons.
+
+- Now you will be able to flash backup and restore device
+
+>[!WARNING]  
+>For some reason I encountered behavior that even after restore Palma refused to boot. Setting active boot bartition to secondary and then back was needed.
+>Can be done this way:
+>```
+>edl --loader=palma2pro.bin setactiveslot a
+>edl --loader=palma2pro.bin reset
+>edl --loader=palma2pro.bin setactiveslot b
+>edl --loader=palma2pro.bin reset
+>```
+
+## Rooting Palma 2 Pro - In progress
+
+Any help appreciated. Let's discuss that on [MobileRead](https://www.mobileread.com/forums/showthread.php?t=371138)
+
