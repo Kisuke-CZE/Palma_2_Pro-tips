@@ -151,3 +151,15 @@ You are probably stuck with unresponsive device with BOOX logo on the screen.
 
 Any help appreciated. Let's discuss that on [MobileRead](https://www.mobileread.com/forums/showthread.php?t=371138)
 
+## How to get into recovery menu
+
+[source](https://drive.google.com/file/d/1Mu-mD0hE7L09MH52Oq13iGLPQM-NFXbB/view?pli=1)
+
+- When turned off, long-press power button until screen blinks
+
+- Release the power button and then press it again for 5 sec
+
+- Release the power button and short-press 6 times
+
+- If you end up with white screen, pres `Vol Down` once
+
