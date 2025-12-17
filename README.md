@@ -135,10 +135,10 @@ You are probably stuck with unresponsive device with BOOX logo on the screen.
 
 - Immediately release power button and press and hold VolUp + VolDown until you see device is recognized by computer. Then release buttons.
 
-- Now you will be able to flash backup and restore device
+- Now you will be able to flash backup and restore device functionality
 
 >[!WARNING]  
->For some reason I encountered behavior that even after restore Palma refused to boot. Setting active boot bartition to secondary and then back was needed.
+>For some reason I encountered behavior that even after restore Palma refused to boot. Setting active boot partition to secondary and then back was needed.
 >Can be done this way:
 >```
 >edl --loader=palma2pro.bin setactiveslot a
