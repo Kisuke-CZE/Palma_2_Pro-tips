@@ -32,7 +32,8 @@ Both these options brings you to app profile in eInk Wise.
 
 >[!WARNING]  
 >Remember this setting is tied to specific profile for that app. If you change profile from `Customize` to `Recommended` or `Fast` settings including background running will be different (probably default => running in background disabled).  
->You have to customize settings for all profiles, or be sure that profile for that app never changes.
+>You have to customize settings for all profiles, or be sure that profile for that app never changes.  
+>You can of course take advantage of this feature. Creating profile with and without background running enabled. Then switch app to run in background mode only when you want to (for example when you are going to listen audiobook or something)
 
 - In eInk Wise profile tap on `Others`  
 ![eInkWise settings](screenshots/pwr04_einkwise_settings.png "eInkWise settings")
