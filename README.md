@@ -154,7 +154,7 @@ Any help appreciated. Let's discuss that on [MobileRead](https://www.mobileread.
 
 ## How to get into recovery menu
 
-[source](https://drive.google.com/file/d/1Mu-mD0hE7L09MH52Oq13iGLPQM-NFXbB/view?pli=1)
+Source: [Boox support](https://help.boox.com/hc/en-us/community/posts/39889271676948-Palma-2-Factory-Reset) [video](https://drive.google.com/file/d/1Mu-mD0hE7L09MH52Oq13iGLPQM-NFXbB/view?pli=1)
 
 - When turned off, long-press power button until screen blinks
 
