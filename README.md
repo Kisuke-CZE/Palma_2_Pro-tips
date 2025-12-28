@@ -137,7 +137,7 @@ Known problems:
 
 - When device goes to sleep/lockscreen, is is unable to receive calls. If you call number on Palma 2 Pro, you will get `LINE BUSY` signal. But SMS bessages are somehow received in sleep mode.
 - There are no settings in Onyx Power Settings that will allow `Stay Connnected` to mobile network in sleep state (as it does for Wifi or Bluetooth)
-- Device does calling (incoming or outgoing) over GSM network. There is no VoLTE or VoWifi support so far. When you are in are where is no GSM network, you will be not able to use calling. (Which is not rare in my country) 
+- Device does calling (incoming or outgoing) over GSM network. There is no VoLTE or VoWifi support so far. When you are in area where is no GSM network, you will be not able to use calling. (Which is not rare in my country) 
 
 ## How to restore Palma 2 Pro if not booting to Android
 
