@@ -157,7 +157,7 @@ You are probably stuck with unresponsive device with BOOX logo on the screen.
 - Now you will be able to flash backup and restore device functionality
 
 >[!WARNING]  
->For some reason I encountered behavior that even after restore Palma refused to boot. Setting active boot partition to secondary and then back was needed.
+>For some reason I encountered behavior that even after restore Palma refused to boot. Setting active boot partition to secondary and then back was needed.  
 >Can be done this way:
 >```
 >edl --loader=palma2pro.bin setactiveslot a
@@ -171,8 +171,8 @@ You are probably stuck with unresponsive device with BOOX logo on the screen.
 Used sources: [Palma2Root guide issue](https://github.com/jdkruzr/BooxPalma2RootGuide/issues/9), [eOS documentation - Install on FP4](https://doc.e.foundation/devices/FP4/install), [MobileRead thread](https://www.mobileread.com/forums/showthread.php?t=371138)
 
 >[!WARNING]  
->This procedure will wipe your data on device! Be prepared.
->Rooting and modifying device is dangerous. Do this on your risk. You can cause device will be unable to boot.
+>This procedure will wipe your data on device! Be prepared.  
+>Rooting and modifying device is dangerous. Do this on your risk. You can cause device will be unable to boot.  
 >It is probably good idea to buy some pre-made EDL cable to be prepared when things goes wrong!
 
 ### Preparing tools
