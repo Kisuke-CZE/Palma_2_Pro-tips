@@ -121,6 +121,24 @@ I choosed SunUp because my favorite messaging app has some [weird bug](https://g
 > [!NOTE]  
 > You will need to enable notification app to [run in background](#enabling-app-to-run-in-background)
 
+## Phone calls and SMS on Palma 2 Pro
+
+Since system update `2025-12-27_14-24_4.1.1-rel_12272` (there are [some reports about earlier](https://www.reddit.com/r/eink/comments/1ptmhz7/phone_calls_available_on_palma2_pro/) ) device is capable of calling and SMS messages without any modifications.  
+While SMS reception and sending is reliable as I tested so far. This is not same for receiving calls. So it is still not enough to be used as reliable phone!
+
+You only have to install some dialer app and SMS app. And set them as default dialer/sms app.  
+Dialer examples: [Amadz](https://f-droid.org/packages/com.talsk.amadz/), [Fossify Phone](https://f-droid.org/packages/org.fossify.phone/), [Google Dialer](https://play.google.com/store/apps/details?id=com.google.android.dialer)  
+SMS app examples: [Fossify Messages](https://f-droid.org/packages/org.fossify.messages/), [QUIK](https://f-droid.org/packages/dev.octoshrimpy.quik.fdroid/), [Google Messages](https://play.google.com/store/apps/details?id=com.google.android.apps.messaging).
+
+> [!NOTE]  
+> You will need to enable dialer and messaging app to [run in background](#enabling-app-to-run-in-background)
+
+Known problems:
+
+- When device goes to sleep/lockscreen, is is unable to receive calls. If you call number on Palma 2 Pro, you will get `LINE BUSY` signal. But SMS bessages are somehow received in sleep mode.
+- There are no settings in Onyx Power Settings that will allow `Stay Connnected` to mobile network in sleep state (as it does for Wifi or Bluetooth)
+- Device does calling (incoming or outgoing) over GSM network. There is no VoLTE or VoWifi support so far. When you are in are where is no GSM network, you will be not able to use calling. (Which is not rare in my country) 
+
 ## How to restore Palma 2 Pro if not booting to Android
 
 If you somehow bricked your Palma and have backup there is still hope!  
