@@ -166,9 +166,132 @@ You are probably stuck with unresponsive device with BOOX logo on the screen.
 >edl --loader=palma2pro.bin reset
 >```
 
-## Rooting Palma 2 Pro - In progress
+## Rooting Palma 2 Pro
 
-Any help appreciated. Let's discuss that on [MobileRead](https://www.mobileread.com/forums/showthread.php?t=371138)
+Used sources: [Palma2Root guide issue](https://github.com/jdkruzr/BooxPalma2RootGuide/issues/9), [eOS documentation - Install on FP4](https://doc.e.foundation/devices/FP4/install), [MobileRead thread](https://www.mobileread.com/forums/showthread.php?t=371138)
+
+>[!WARNING]  
+>This procedure will wipe your data on device! Be prepared.
+>Rooting and modifying device is dangerous. Do this on your risk. You can cause device will be unable to boot.
+>It is probably good idea to buy some pre-made EDL cable to be prepared when things goes wrong!
+
+### Preparing tools
+
+Get [edl](https://github.com/bkerler/edl) utility
+
+Get Palma loader file for EDL utility: `wget -O palma2pro.bin 'https://github.com/bkerler/Loaders/raw/refs/heads/main/lenovo_motorola/0000000000000000_bdaf51b59ba21d8a_fhprg.bin'`
+
+Get latest available eOS build for Fairphone 4 Android 15 from [eOS site](https://images.ecloud.global/community/FP4/). I used [this](https://images.ecloud.global/community/FP4/IMG-e-3.3-a15-20251213556761-community-FP4.zip) specifically.
+
+From that Fairphone 4 image, extract `abl.img` somewhere. I will reference it as `abl-fp4.img` in the process.
+
+Reboot phone into bootloader with `adb reboot bootloader`, then issue `fastboot getvar current-slot`. And note down that letter. For me it was and rest of the guide I will be using slot `a`. Do adjust those commands for your active slot.
+
+### Backing up data
+
+Put the device into EDL mode with `adb reboot edl`
+
+Now do the backup of the device. Best way how to do that is backing up all partitions.  
+This takes about 1 hour and backup is about 128GB in size.  
+It is optional, but highly recommended. Can be done with command (folder `stock_partitions_backup` must exists):  
+`edl --loader=palma2pro.bin --memory=ufs rl stock_partitions_backup/`
+
+Now let's backup the important stuff only. This cannot be skipped:  
+```
+mkdir stock_backup
+edl --loader=palma2pro.bin --memory=ufs r devinfo stock_backup/devinfo.img
+edl --loader=palma2pro.bin --memory=ufs r boot_a stock_backup/boot_a.img
+edl --loader=palma2pro.bin --memory=ufs r boot_b stock_backup/boot_b.img
+edl --loader=palma2pro.bin --memory=ufs r vbmeta_a stock_backup/vbmeta_a.img
+edl --loader=palma2pro.bin --memory=ufs r vbmeta_b stock_backup/vbmeta_b.img
+edl --loader=palma2pro.bin --memory=ufs r vbmeta_system_a stock_backup/vbmeta_system_a.img
+edl --loader=palma2pro.bin --memory=ufs r vbmeta_system_b stock_backup/vbmeta_system_b.img
+edl --loader=palma2pro.bin --memory=ufs r recovery_a stock_backup/recovery_a.img
+edl --loader=palma2pro.bin --memory=ufs r recovery_b stock_backup/recovery_b.img
+edl --loader=palma2pro.bin --memory=ufs r abl_a stock_backup/abl_a.img
+edl --loader=palma2pro.bin --memory=ufs r abl_b stock_backup/abl_b.img
+```
+
+### Unlocking bootloader
+
+Unfortunately Boox firmware does not allow unlocking device. But since hardware is similar to Fairphone 4 we will take Fairphone image to help.
+
+Get into edl mode again with `adb reboot edl`. Then issue those commands to write FP4 ABL into Palma (not sure why, but for me it was needed to write into both slots):  
+```
+edl --loader=palma2pro.bin --memory=ufs w abl_a abl-fp4.img
+edl --loader=palma2pro.bin --memory=ufs w abl_b abl-fp4.img
+```
+
+Now use your activeslot you noted before (my palma was not booting without this) and reboot device:  
+```
+edl --loader=palma2pro.bin setactiveslot a
+edl --loader=palma2pro.bin reset
+```
+
+Go into android settings which is described in [run in background guide](#chapter-3---android-settings).  
+Select `System` submenu.  
+![System settings](screenshots/rooting1_system_settings.png "System settings")  
+Then select `Developer options`.  
+![Developer settings](screenshots/rooting2_developer_settings.png "Developer settings")  
+In those go to Developer options enable `OEM unlocking`.  
+![Enable unlocking](screenshots/rooting3_enable_unlocking.png "Enable unlocking")
+
+Reboot the device.
+
+Now we will proceed to unlocking bootloader. Your data will be WIPED from the device. There is no going back! Ready?
+
+Reboot into bootloader with `adb reboot bootloader`.
+
+You should get BOOX logo on screen and command `fastboot devices` should see the device.
+
+Issue `fastboot flashing unlock` to begin unlocking.  
+On screen there will still bee BOOX logo, nothing visible.  
+Press `Vol Up` once, and then `Power button`.  
+Now device will automatically reboot few times and wipes all your data.
+
+Now you are with clear device in defaults. Enable ADB in settings again. And issue `adb reboot bootloader`.
+
+Issue `fastboot flashing unlock_critical`.  
+AGAIN: On screen there will still bee BOOX logo, nothing visible.  
+Press `Vol Up` once, and then `Power button`.  
+Device will automatically reboot few times and wipes all your data once again.
+
+Now you have unlocked device. `fastboot oem device-info` should say something like:  
+```
+(bootloader) Verity mode: true
+(bootloader) Device unlocked: true
+(bootloader) Device critical unlocked: true
+(bootloader) Charger screen enabled: true
+```
+
+### Rooting with Magisk
+
+From now the rooting procedure can be done as on [Palma 2](https://github.com/jdkruzr/BooxPalma2RootGuide).
+
+Install [Magisk](https://github.com/topjohnwu/Magisk/releases/) to your Palma
+
+Push your backed up boot image for your activeslot onto Palma `adb push stock_backup/boot_a.img /sdcard/`
+
+Patch the boot image using Magisk in your phone. Note the filename and use it in next command.
+
+Then download it back to your computer: `adb pull /sdcard/Download/magisk_patched-30600_x1Hl9.img boot_a_patched.img`
+
+Reboot Palma into EDL mode: `adb reboot edl`
+
+Write modified image into Palma and reboot it:  
+```
+edl --loader=palma2pro.bin --memory=ufs w boot_a boot_a_patched.img
+edl --loader=palma2pro.bin reset
+```
+
+Congrats! Your Palma is rooted now!
+
+If you want, you can now flash back the stock ABL images back into Palma.  
+I do recommend it, because without it, device was kinda unstable and for example launching Onyx settings from top-tray did not worked (after flashing original ABL it did worked)
+```
+edl --loader=palma2pro.bin --memory=ufs w abl_a stock_backup/abl_a.img
+edl --loader=palma2pro.bin --memory=ufs w abl_b stock_backup/abl_b.img
+```
 
 ## How to get into recovery menu
 
