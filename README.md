@@ -191,10 +191,10 @@ Reboot phone into bootloader with `adb reboot bootloader`, then issue `fastboot 
 
 Put the device into EDL mode with `adb reboot edl`
 
-Now do the backup of the device. Best way how to do that is backing up all partitions.  
-This takes about 1 hour and backup is about 128GB in size.  
-It is optional, but highly recommended. Can be done with command (folder `stock_partitions_backup` must exists):  
-`edl --loader=palma2pro.bin --memory=ufs rl stock_partitions_backup/`
+Now do the backup of the device. Best way how to do that is backing up all partitions. (except userdata - will be wiped anyway)  
+It takes about 15 minutes and takes ~9GB disk space. Can be done with command (folder `stock_partitions_backup` must exists):  
+`edl --loader=palma2pro.bin --memory=ufs rl stock_partitions_backup/ --skip=userdata`  
+If you do this you can skip next step with backing all partitions again and adjust partitipn paths to this whole backup.
 
 Now let's backup the important stuff only. This cannot be skipped:  
 ```
@@ -228,7 +228,7 @@ edl --loader=palma2pro.bin setactiveslot a
 edl --loader=palma2pro.bin reset
 ```
 
-Go into android settings which is described in [run in background guide](#chapter-3---android-settings).  
+Go into android settings. You can use command `adb shell am start -a android.settings.SETTINGS` to do that. Or use method described in [run in background guide](#chapter-3---android-settings).  
 Select `System` submenu.  
 ![System settings](screenshots/rooting1_system_settings.png "System settings")  
 Then select `Developer options`.  
