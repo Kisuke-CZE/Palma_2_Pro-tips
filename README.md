@@ -41,6 +41,13 @@ Both these options brings you to app profile in eInk Wise.
 - On `Others` tab enable `Stay active in the background` option
 ![eInkWise others](screenshots/pwr05_einkwise_runinbgr.png "eInkWise others")
 
+> [!NOTE]  
+> Since software update `2026-05-11_4.2-rel_05112_c56d9759e` this menu changed. Now there is time frame settings instead simple on/off button. You must set it to `Unlimited` to allow app runnig all the time.
+>
+> ![eInkWise background time frame](screenshots/pwr05_einkwise_runinbgr_updated.png "eInkWise background time frame")
+>
+> ![eInkWise background time frame 2](screenshots/pwr05_einkwise_runinbgr_updated2.png "eInkWise background time frame 2")
+
 ### Chapter 2 - Onyx Settings
 
 Now let's disable `App freezing` and enable `Autostart` for our app.
@@ -145,9 +152,10 @@ Known problems:
 
 I was informed that some carriers do not provision provision or even block VoLTE and VoWifi features for "unsupported" devices. That could mean, device was just not sold by specific carrier. This is pretty interesting (and strange in 2026) problematic - you can [learn something more here](https://consumerrights.wiki/w/Voice_over_LTE), if interested.
 
-There is pretty good chance that even if your carrier does not allow VoLTE and/or VoWifi, you can successfuly force it using [Pixel IMS patch](https://github.com/kyujin-cho/pixel-volte-patch) ([version 1.3.2](https://github.com/kyujin-cho/pixel-volte-patch/releases/tag/1.3.2) tested and is working).
+There is pretty good chance that even if your carrier does not allow VoLTE and/or VoWifi, you can successfuly force it using [Pixel IMS patch](https://github.com/kyujin-cho/pixel-volte-patch) ([version 1.3.2](https://github.com/kyujin-cho/pixel-volte-patch/releases/tag/1.3.2) tested and is working). Unfortunately since update `2026-05-11_4.2-rel_05112_c56d9759e`, Pixel IMS patch is not permanent and will be lost on every reboot.
 
-If you use Pixel IMS, it is needed to be done only once. Just enable desired function in Pixel IMS, go to settings and enable VoLTE and/or VoWifi. Then you MUST reboot Palma 2 Pro to take effect. Settings will survive reboots (not sure if survives installing BOOX update - no way to test so far)
+I did found that after 4.2 update, the easiest way how to make it work and also permanent is using [magisk module](https://github.com/cxOrz/pixel_ims_module). Modified version of module which works on Palma 2 Pro out of box can be [downloaded here](https://github.com/Kisuke-CZE/palma2pro_ims_module/archive/refs/heads/main.zip).  
+Just install module in Magisk and reboot your Palma.
 
 ## How to restore Palma 2 Pro if not booting to Android
 
@@ -314,4 +322,3 @@ Source: [Boox support](https://help.boox.com/hc/en-us/community/posts/3988927167
 - Release the power button and short-press 6 times
 
 - If you end up with white screen, pres `Vol Down` once
-
