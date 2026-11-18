@@ -1,5 +1,8 @@
 # Onyx Boox Palma 2 Pro tips & tricks
 
+>[!WARNING]
+>⚠️ This repository has moved to [codeberg.org/Kisuke-CZE/Palma_2_Pro-tips](https://codeberg.org/Kisuke-CZE/Palma_2_Pro-tips)
+
 ## Enabling app to run in background
 
 Sometimes when you have a computer in your pocket, running pretty complex operating system you want to enable multitasking on it.  
